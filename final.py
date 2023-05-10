@@ -1,6 +1,8 @@
 import streamlit as st 
 import pickle
 import pandas  as pd
+import pip
+pip.main(['install', 'scikit-learn'])
 from sklearn.metrics.pairwise import sigmoid_kernel
 
 
