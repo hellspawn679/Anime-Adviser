@@ -29,7 +29,15 @@ now make sure you have all the required modules of python and you have python ve
 ```
 python -m pip install -r requirements.txt
 ```
-now simply launch streamlit  using 
+now launch you flask backend 
+```
+python server.py
+```
+now change the dir 
+```
+cd model
+```
+now simply run streamlit 
 ```
 streamlit run final.py
 ```
