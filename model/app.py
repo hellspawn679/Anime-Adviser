@@ -14,7 +14,7 @@ an_request=json.dumps(an_request, indent=4)
 
 
 if st.button('Recommend'):
-    return_from_api=requests.post("http://"+location.host+":8000", json = an_request)
+    return_from_api=requests.post("http://my-api.dev:5000", json = an_request)
     json_data=json.loads(return_from_api.json())
     rearranged_data = [{'Anime name': anime, 'Rating': rating} for anime, rating in zip(json_data['Anime name'].values(), json_data['Rating'].values())]
     df = pd.DataFrame(rearranged_data)
