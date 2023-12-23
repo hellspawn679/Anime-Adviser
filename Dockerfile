@@ -4,7 +4,7 @@
 # If you need more help, visit the Dockerfile reference guide at
 # https://docs.docker.com/engine/reference/builder/
 
-ARG PYTHON_VERSION=3.9.11
+ARG PYTHON_VERSION=3.10.11
 FROM python:${PYTHON_VERSION}-slim as base
 
 # Prevents Python from writing pyc files.
@@ -34,7 +34,7 @@ RUN adduser \
 # into this layer.
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
-    python -m pip install -r requirements.txt
+    python -m pip install -r requirements.txt 
 
 # Switch to the non-privileged user to run the application.
 USER appuser
@@ -43,7 +43,8 @@ USER appuser
 COPY . .
 
 # Expose the port that the application listens on.
-EXPOSE 8501
+EXPOSE 5000
 
 # Run the application.
-CMD streamlit run final.py
+
+CMD gunicorn -w 4 -b 0.0.0.0:5000 server:app

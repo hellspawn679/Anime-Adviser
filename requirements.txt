@@ -2,8 +2,11 @@ Streamlit
 pandas  
 scikit-learn
 wordcloud
-
+flask
+flask_restful
+flask_cors
 matplotlib
 seaborn
 numpy 
 scipy
+gunicorn
